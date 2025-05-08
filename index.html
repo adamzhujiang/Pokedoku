@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <script defer src="./js/app.js"></script>
+    <title>Pokedoku</title>
+</head>
+<body>
+    <h1>Pokedoku</h1>
+  
+    <div class="PP">PP: 9/9</div>
+
+    <div class="grid" id="pokedoku-grid">
+
+
+    <div class="label">  <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png" alt="Pokeball">    </div>
+    <div class="label">Fire</div>
+    <div class="label">Water</div>
+    <div class="label">Poison</div>
+
+    <div class="label">Flying</div>
+    <div class="cell" data-row="Flying" data-col="Fire"></div>
+    <div class="cell" data-row="Flying" data-col="Water"></div>
+    <div class="cell" data-row="Flying" data-col="Poison"></div>
+
+    <div class="label">Can Mega Evolve</div>
+    <div class="cell" data-row="Can Mega Evolve" data-col="Fire"></div>
+    <div class="cell" data-row="Can Mega Evolve" data-col="Water"></div>
+    <div class="cell" data-row="Can Mega Evolve" data-col="Poison"></div>
+    
+    <div class="label">Can Learn Tackle</div>
+    <div class="cell" data-row="Can Learn Tackle" data-col="Fire"></div>
+    <div class="cell" data-row="Can Learn Tackle" data-col="Water"></div>
+    <div class="cell" data-row="Can Learn Tackle" data-col="Poison"></div>
+  </div>
+
+  <button id="start">Start!</button>
+  <button id="reset">Reset!</button>
+
+</body>
+</html>

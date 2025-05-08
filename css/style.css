@@ -1,0 +1,39 @@
+body {
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: repeat(4, 100px);
+    gap: 4px;
+  }
+  .cell, .label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #333;
+    font-size: 14px;
+    text-align: center;
+    padding: 6px;
+    background: white;
+  }
+  .label {
+    font-weight: bold;
+    background: beige;
+  }
+  .cell {
+    cursor: pointer;
+  }
+
+  button {
+    padding: 0px 0px 0px 0px;
+  }
+
+  .PP {
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
