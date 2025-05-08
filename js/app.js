@@ -10,7 +10,7 @@ let attempts;
 
 /*---------------------------- Variables (state) ----------------------------*/
 
-
+const maxAttempts = 9;
 
 /*------------------------ Cached Element References ------------------------*/
 const squareEls = document.querySelectorAll('.cell')
@@ -36,14 +36,23 @@ function render() {
 }
 
 function handleClick(index, cell) {
-    if (board[index]) return;
+    if (board[index] || attempts === maxAttempts) return;
 
     const guess = prompt(`Enter a Pokemon for ${cell.dataset.row} + ${cell.dataset.col}`)
     if (guess) {
         cell.textContent = guess;
         board[index] = guess;
+        attempts++;
         render();
+
+        if (attempts === maxAttempts) {
+            endGame()
+        }
     }
+}
+
+function endGame() {
+    alert("You ran out of PP! Game over.")
 }
 
     //     squareEls.forEach((cell, index) => {
