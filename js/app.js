@@ -13,7 +13,7 @@ let attempts;
 
 
 /*------------------------ Cached Element References ------------------------*/
-const squareEl = document.querySelectorAll('.cell')
+const squareEls = document.querySelectorAll('.cell')
 
 const resetEl = document.querySelector('#reset')
 
@@ -26,15 +26,43 @@ function init() {
 
     board = ['', '', '', '', '', '', '', '', ''];
     win = false;
+    attempts = 0;
     
     render()
 }
 
-function updateBoard() {
-    
+function render() {
+    console.log("This is the:", board)
 }
+
+function handleClick(index, cell) {
+    if (board[index]) return;
+
+    const guess = prompt(`Enter a Pokemon for ${cell.dataset.row} + ${cell.dataset.col}`)
+    if (guess) {
+        cell.textContent = guess;
+        board[index] = guess;
+        render();
+    }
+}
+
+    //     squareEls.forEach((cell, index) => {
+//         cell.addEventListener('click', () => {
+//             const guess = prompt(`Enter a Pokemon for ${cell.dataset.row} + ${cell.dataset.col}`)
+//             if (guess) {
+//                 cell.textContent = guess;
+//                 board[index] = guess;
+//                 console.log(board)
+//             }   
+//         })
+//     })
+// }
 
 /*----------------------------- Event Listeners -----------------------------*/
 
+squareEls.forEach((cell, index) => {
+    cell.addEventListener('click', () => handleClick(index, cell));
+});
 
-
+resetEl.addEventListener('click', init);
+startEl.addEventListener('click', init);
