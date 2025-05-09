@@ -11,7 +11,7 @@ const gen1Pokemon = [
       evolvesWithItem: false,
       evolvesByLevelUp: true,
       canMegaEvolve: false,
-      canLearnTackle: true
+      canLearnTackle: true,
     },
     {
       number: 2,
