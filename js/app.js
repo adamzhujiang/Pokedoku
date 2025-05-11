@@ -68,17 +68,74 @@ function handleClick(index, cell) {
     const guess = prompt(`Enter a Pokemon for ${cell.dataset.row} + ${cell.dataset.col}`)
     if (guess) {
 
-        const pokemon = pokedata.find(p => p.name.toLowerCase() === guess.toLowerCase())
+        const pokemon = pokemonList.find(p => p.name.toLowerCase() === guess.toLowerCase())
         const col = cell.dataset.col
         const row = cell.dataset.row
 
-        let isCorrect = false;
+        let isCorrect = true;
     
         if (
-            row1.innerText === pokemon.types.includes(row1.innerText) && 
-            col === col1.innerText && pokemon.types.includes(col1.innerText) 
+            row === "Normal" && !pokemon.typing.includes("Normal") ||
+            row === "Flying" && !pokemon.typing.includes("Flying") ||
+            row === "Fire" && !pokemon.typing.includes("Fire") ||
+            row === "Water" && !pokemon.typing.includes("Water") ||
+            row === "Electric" && !pokemon.typing.includes("Electric") ||
+            row === "Grass" && !pokemon.typing.includes("Grass") ||
+            row === "Ice" && !pokemon.typing.includes("Ice") ||
+            row === "Fighting" && !pokemon.typing.includes("Fighting") ||
+            row === "Poison" && !pokemon.typing.includes("Poison") ||
+            row === "Ground" && !pokemon.typing.includes("Ground") ||
+            row === "Psychic" && !pokemon.typing.includes("Psychic") ||
+            row === "Bug" && !pokemon.typing.includes("Bug") ||
+            row === "Rock" && !pokemon.typing.includes("Rock") ||
+            row === "Ghost" && !pokemon.typing.includes("Ghost") ||
+            row === "Dragon" && !pokemon.typing.includes("Dragon") ||
+            row === "Dark" && !pokemon.typing.includes("Dark") ||
+            row === "Steel" && !pokemon.typing.includes("Steel") ||
+            row === "Fairy" && !pokemon.typing.includes("Fairy") ||
+            row === "Monotype" && !pokemon.isMonotype ||
+            row === "First Stage Evolution" && !pokemon.isFirstStage ||
+            row === "Second Stage Evolution" && !pokemon.isSecondStage ||
+            row === "Third Stage Evolution" && !pokemon.isThirdStage ||
+            row === "Legendary or Mythical" && !pokemon.isLegendaryOrMythical ||
+            row === "Evolves with Item" && !pokemon.evolvesWithItem ||
+            row === "Evolves by Level Up" && !pokemon.evolvesByLevelUp ||
+            row === "Can Mega Evolve" && !pokemon.canMegaEvolve ||
+            row === "Can Learn Tackle" && !pokemon.canLearnTackle
         ) {
-            isCorrect = true
+            isCorrect = false
+        }
+
+        if (
+            col === "Normal" && !pokemon.typing.includes("Normal") ||
+            col === "Flying" && !pokemon.typing.includes("Flying") ||
+            col === "Fire" && !pokemon.typing.includes("Fire") ||
+            col === "Water" && !pokemon.typing.includes("Water") ||
+            col === "Electric" && !pokemon.typing.includes("Electric") ||
+            col === "Ice" && !pokemon.typing.includes("Ice") ||
+            col === "Grass" && !pokemon.typing.includes("Grass") ||
+            col === "Fighting" && !pokemon.typing.includes("Fighting") ||
+            col === "Poison" && !pokemon.typing.includes("Poison") ||
+            col === "Ground" && !pokemon.typing.includes("Ground") ||
+            col === "Psychic" && !pokemon.typing.includes("Psychic") ||
+            col === "Bug" && !pokemon.typing.includes("Bug") ||
+            col === "Rock" && !pokemon.typing.includes("Rock") ||
+            col === "Ghost" && !pokemon.typing.includes("Ghost") ||
+            col === "Dragon" && !pokemon.typing.includes("Dragon") ||
+            col === "Dark" && !pokemon.typing.includes("Dark") ||
+            col === "Steel" && !pokemon.typing.includes("Steel") ||
+            col === "Fairy" && !pokemon.typing.includes("Fairy") ||
+            col === "Monotype" && !pokemon.isMonotype ||
+            col === "First Stage Evolution" && !pokemon.isFirstStage ||
+            col === "Second Stage Evolution" && !pokemon.isSecondStage ||
+            col === "Third Stage Evolution" && !pokemon.isThirdStage ||
+            col === "Legendary or Mythical" && !pokemon.isLegendaryOrMythical ||
+            col === "Evolves with Item" && !pokemon.evolvesWithItem ||
+            col === "Evolves by Level Up" && !pokemon.evolvesByLevelUp ||
+            col === "Can Mega Evolve" && !pokemon.canMegaEvolve ||
+            col === "Can Learn Tackle" && !pokemon.canLearnTackle
+        ) {
+            isCorrect = false
         }
 
         if (isCorrect) {

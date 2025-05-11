@@ -1,4 +1,4 @@
-const Pokemon = [
+const pokemonList = [
     {
       number: 1,
       name: "Bulbasaur",
