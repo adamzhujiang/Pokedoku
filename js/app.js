@@ -1,6 +1,6 @@
 /*-------------------------------- Constants --------------------------------*/
 
-const allCategories = ['Fire', 'Water', 'Poison', 'Flying', 'Can Mega Evolve', 'Can Learn Tackle']
+const allCategories = ['Fire', 'Water', 'Poison', 'Flying', 'Can Mega Evolve', 'Can Learn Tackle', 'First Stage Evolution', 'Second Stage Evolution', 'Third Stage Evolution']
 
 let board;
 
@@ -65,12 +65,19 @@ function render() {
 function handleClick(index, cell) {
     if (board[index] || attempts >= maxAttempts) return;
 
-    const guess = prompt(`Enter a Pokemon for ${cell.dataset.row} + ${cell.dataset.col}`)
+    const guess = prompt(`Enter a valid Pokemon`)
     if (guess) {
 
         const pokemon = pokemonList.find(p => p.name.toLowerCase() === guess.toLowerCase())
-        const col = cell.dataset.col
-        const row = cell.dataset.row
+        const col = [col1.innerText, col2.innerText, col3.innerText]
+        const row = [row1.innerText, row2.innerText, row3.innerText]
+        console.log(guess);
+        console.log(pokemon);
+
+// if (!pokemon) {
+//     alert("Not a valid entry");
+// }
+
 
         let isCorrect = true;
     
@@ -146,10 +153,13 @@ function handleClick(index, cell) {
             ppCount();
             render();
         } else{
-            alert("WRONG!");
+            // alert("WRONG!");
             attempts++;
+
+            ppCount();
         }
 
+        console.log(isCorrect)
 
         if (attempts === maxAttempts) {
             endGame()
