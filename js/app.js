@@ -8,18 +8,45 @@ let win;
 
 let attempts;
 
+let points;
 
 
 /*---------------------------- Variables (state) ----------------------------*/
 
 const maxAttempts = 9;
 
+const difficultyLevel = {
+    beginner: {
+        rows: ["Grass", "Water", "Fire"],
+        cols: ["First Stage Evolution", "Second Stage Evolution", "Third Stage Evolution"]
+    },
+    medium: {
+        rows: ["Legendary or Mythical", "Can Learn Tackle", "Evolves by Level Up"],
+        cols: ["Psychic", "Fire", "Electric"]
+    },
+    hard: {
+        rows: ["Evolves by Item", "Can Mega Evolve", "Electric"],
+        cols: ["Steel", "Water", "Monotype"]
+    },
+    hard: {
+        rows: ["Evolves by Item", "Can Mega Evolve", "Electric"],
+        cols: ["Steel", "Water", "Monotype"]
+    },
+}
+
 /*------------------------ Cached Element References ------------------------*/
 const squareEls = document.querySelectorAll('.cell')
 
-const resetEl = document.querySelector('#reset')
+const giveUpEl = document.querySelector('#give-up')
 
 const startEl = document.querySelector('#start')
+
+const easyButton = document.querySelector('#easy')
+const mediumButton = document.querySelector('#medium')
+const hardButton = document.querySelector('#hard')
+const expertButton = document.querySelector('#expert')
+const randomButton = document.querySelector('#random')
+
 
 const row1 = document.getElementById('row-1')
 const row2 = document.getElementById('row-2')
@@ -32,19 +59,18 @@ const col3 = document.getElementById('col-3')
 function randomizer(category) {
     const randomNumber = Math.floor(Math.random()*allCategories.length)
     const catName = allCategories[randomNumber]
-    console.log(randomNumber)
     category.innerText=catName
     allCategories.splice(randomNumber,1)
 }
 
 /*-------------------------------- Functions --------------------------------*/
 
-function init() {
-    console.log("check")
+function initRandom() {
 
     board = ['', '', '', '', '', '', '', '', ''];
     win = false;
     attempts = 0;
+    points = 0;
     
     randomizer(row1)
     randomizer(row2)
@@ -55,6 +81,127 @@ function init() {
 
     squareEls.forEach(cell => cell.textContent = '')
     ppCount()
+    pointCount()
+    render()
+}
+
+function initEasy() {
+
+    board = ['', '', '', '', '', '', '', '', ''];
+    win = false;
+    attempts = 0;
+    points = 0;
+    
+    row1.innerText = "Grass";
+    row2.innerText = "Water";
+    row3.innerText = "Fire";
+    col1.innerText = "First Stage Evolution";
+    col2.innerText = "Second Stage Evolution";
+    col3.innerText = "Third Stage Evolution";
+
+    const rowLabels = [row1.innerText, row2.innerText, row3.innerText];
+    const colLabels = [col1.innerText, col2.innerText, col3.innerText];
+  
+    squareEls.forEach((cell, index) => {
+      const row = Math.floor(index / 3);
+      const col = index % 3;
+      cell.textContent = '';
+      cell.dataset.row = rowLabels[row];
+      cell.dataset.col = colLabels[col];
+    });
+
+    ppCount()
+    pointCount()
+    render()
+}
+
+function initMedium() {
+
+    board = ['', '', '', '', '', '', '', '', ''];
+    win = false;
+    attempts = 0;
+    points = 0;
+    
+    row1.innerText = "Legendary or Mythical";
+    row2.innerText = "Can Learn Tackle";
+    row3.innerText = "Evolves by Level Up";
+    col1.innerText = "Psychic";
+    col2.innerText = "Fire";
+    col3.innerText = "Electric";
+
+    const rowLabels = [row1.innerText, row2.innerText, row3.innerText];
+    const colLabels = [col1.innerText, col2.innerText, col3.innerText];
+  
+    squareEls.forEach((cell, index) => {
+      const row = Math.floor(index / 3);
+      const col = index % 3;
+      cell.textContent = '';
+      cell.dataset.row = rowLabels[row];
+      cell.dataset.col = colLabels[col];
+    });
+
+    ppCount()
+    pointCount()
+    render()
+}
+
+function initHard() {
+
+    board = ['', '', '', '', '', '', '', '', ''];
+    win = false;
+    attempts = 0;
+    points = 0;
+    
+    row1.innerText = "Evolves by Item";
+    row2.innerText = "Can Mega Evolve";
+    row3.innerText = "Electric";
+    col1.innerText = "Steel";
+    col2.innerText = "Water";
+    col3.innerText = "Monotype";
+
+    const rowLabels = [row1.innerText, row2.innerText, row3.innerText];
+    const colLabels = [col1.innerText, col2.innerText, col3.innerText];
+  
+    squareEls.forEach((cell, index) => {
+      const row = Math.floor(index / 3);
+      const col = index % 3;
+      cell.textContent = '';
+      cell.dataset.row = rowLabels[row];
+      cell.dataset.col = colLabels[col];
+    });
+
+    ppCount()
+    pointCount()
+    render()
+}
+
+function initExpert() {
+
+    board = ['', '', '', '', '', '', '', '', ''];
+    win = false;
+    attempts = 0;
+    points = 0;
+    
+    row1.innerText = "Fairy";
+    row2.innerText = "Dark";
+    row3.innerText = "Rock";
+    col1.innerText = "Third Stage Evolution";
+    col2.innerText = "Can Mega Evolve";
+    col3.innerText = "Flying";
+
+    const rowLabels = [row1.innerText, row2.innerText, row3.innerText];
+    const colLabels = [col1.innerText, col2.innerText, col3.innerText];
+  
+    squareEls.forEach((cell, index) => {
+      const row = Math.floor(index / 3);
+      const col = index % 3;
+      cell.textContent = '';
+      cell.dataset.row = rowLabels[row];
+      cell.dataset.col = colLabels[col];
+    });
+
+    ppCount()
+    pointCount()
     render()
 }
 
@@ -69,14 +216,10 @@ function handleClick(index, cell) {
     if (guess) {
 
         const pokemon = pokemonList.find(p => p.name.toLowerCase() === guess.toLowerCase())
-        const col = [col1.innerText, col2.innerText, col3.innerText]
-        const row = [row1.innerText, row2.innerText, row3.innerText]
-        console.log(guess);
-        console.log(pokemon);
-
-// if (!pokemon) {
-//     alert("Not a valid entry");
-// }
+        const col = cell.dataset.col
+        const row = cell.dataset.row
+        // console.log(guess);
+        // console.log(pokemon);
 
 
         let isCorrect = true;
@@ -149,11 +292,14 @@ function handleClick(index, cell) {
             cell.textContent = guess;
             board[index] = guess;
             attempts++;
+            points++;
+            console.log(points)
             
+            pointCount();
             ppCount();
             render();
         } else{
-            // alert("WRONG!");
+            alert("WRONG");
             attempts++;
 
             ppCount();
@@ -173,8 +319,18 @@ function ppCount() {
     ppCounter.textContent = `PP: ${maxAttempts-attempts}/9`
 }
 
+function pointCount() {
+    const pointCounter = document.querySelector('.point-counter')
+    pointCounter.textContent = `Points: ${points}/9`
+}
+
 function endGame() {
+
+    if (points = 9) {
+        alert("Congrats, you won!")
+    } else {
     alert("You ran out of PP! Game over.")
+}
 }
 
 /*----------------------------- Event Listeners -----------------------------*/
@@ -183,5 +339,11 @@ squareEls.forEach((cell, index) => {
     cell.addEventListener('click', () => handleClick(index, cell));
 });
 
-resetEl.addEventListener('click', init);
+easyButton.addEventListener('click', initEasy);
+mediumButton.addEventListener('click', initMedium);
+hardButton.addEventListener('click', initHard);
+expertButton.addEventListener('click', initExpert);
+randomButton.addEventListener('click', initRandom)
+
+giveUpEl.addEventListener('click', init);
 startEl.addEventListener('click', init);

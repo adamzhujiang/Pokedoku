@@ -6,8 +6,11 @@ body {
     margin-top: 40px;
   }
 
-h4 {
-  margin-top: -10px;
+.game-tracker{
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 10px;
 }
 
   .grid {
