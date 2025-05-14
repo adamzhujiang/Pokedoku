@@ -1,6 +1,13 @@
 /*-------------------------------- Constants --------------------------------*/
 
-const allCategories = ['Bug', 'Water', 'Poison', 'Flying', 'Can Learn Tackle', 'Can Mega Evolve', 'Third Stage Evolution']
+const allCategories = [
+    "Fire", "Water", "Poison", "Flying",
+    "Electric", "Grass", "Bug", "Ground",
+    "Psychic", "Steel", "Fairy",
+    "Monotype", "Legendary or Mythical",
+    "Can Learn Tackle", "Can Mega Evolve",
+    "First Stage Evolution", "Second Stage Evolution", "Third Stage Evolution"
+];
 
 let board;
 
