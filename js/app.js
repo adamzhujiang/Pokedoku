@@ -20,8 +20,6 @@ const squareEls = document.querySelectorAll('.cell')
 
 const giveUpEl = document.querySelector('#give-up')
 
-const startEl = document.querySelector('#start')
-
 const easyButton = document.querySelector('#easy')
 const mediumButton = document.querySelector('#medium')
 const hardButton = document.querySelector('#hard')
@@ -47,6 +45,8 @@ function randomizer(category) {
 /*-------------------------------- Functions --------------------------------*/
 
 function initRandom() {
+
+    alert("Warning! Random is experimental. You could end up with a typing that does not exist, such as Ice/Normal. Proceed at your own risk!")
 
     board = ['', '', '', '', '', '', '', '', ''];
     win = false;
@@ -212,8 +212,6 @@ function handleClick(index, cell) {
         const pokemon = pokemonList.find(p => p.name.toLowerCase() === guess.toLowerCase())
         const col = cell.dataset.col
         const row = cell.dataset.row
-        // console.log(guess);
-        // console.log(pokemon);
 
         if (board.includes(guess)) {
             alert(`${guess} is already in play! Please try another Pokemon`);
@@ -292,7 +290,6 @@ function handleClick(index, cell) {
             board[index] = guess;
             attempts++;
             points++;
-            console.log(points)
             
             pointCount();
             ppCount();

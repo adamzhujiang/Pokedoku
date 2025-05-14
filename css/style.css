@@ -72,3 +72,38 @@ body {
   .difficulty-label {
     text-align: center;
   }
+
+  #instructions {
+    background-color: #f7f7f7;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    padding: 20px;
+    max-width: 500px;
+    margin-top: 30px;
+    font-family: 'Segoe UI', sans-serif;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  #instructions h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 15px;
+  }
+
+  #instructions ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+
+  #instructions li {
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
+    line-height: 1.6;
+    font-size: 16px;
+    color: #444;
+  }
+
+  #instructions li:last-child {
+    border-bottom: none;
+  }
+
