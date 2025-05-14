@@ -30,6 +30,11 @@ Play the game using this link here!
 
 ## Screenshots
 
+Screenshot of Pokedoku!
+![alt text](https://github.com/adamzhujiang/Pokedoku/blob/main/Pokedoku%20Screenshot.png "Game Screenshot")
+
+Screenshot of logic used to dynamically update column and row headers
+![alt text](https://github.com/adamzhujiang/Pokedoku/blob/main/Grid%20Logic.jpeg "Grid Logic")
 
 ## Unsolved Problems
 Incorporating a drop down for pokemon selection to ensure a smoother user experience.
