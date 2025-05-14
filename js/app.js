@@ -15,25 +15,6 @@ let points;
 
 const maxAttempts = 9;
 
-const difficultyLevel = {
-    beginner: {
-        rows: ["Grass", "Water", "Fire"],
-        cols: ["First Stage Evolution", "Second Stage Evolution", "Third Stage Evolution"]
-    },
-    medium: {
-        rows: ["Legendary or Mythical", "Can Learn Tackle", "Evolves by Level Up"],
-        cols: ["Psychic", "Fire", "Electric"]
-    },
-    hard: {
-        rows: ["Evolves by Item", "Can Mega Evolve", "Electric"],
-        cols: ["Steel", "Water", "Monotype"]
-    },
-    hard: {
-        rows: ["Evolves by Item", "Can Mega Evolve", "Electric"],
-        cols: ["Steel", "Water", "Monotype"]
-    },
-}
-
 /*------------------------ Cached Element References ------------------------*/
 const squareEls = document.querySelectorAll('.cell')
 
@@ -205,6 +186,19 @@ function initExpert() {
     render()
 }
 
+function giveUp() {
+    alert('Oh no! Player whited out! Return back to Pokemon Center');
+    board = ['', '', '', '', '', '', '', '', ''];
+    squareEls.forEach(cell => cell.textContent = '');
+
+    win = false;
+    attempts = 0;
+    points = 0;
+    ppCount()
+    pointCount()
+    render()
+}
+
 function render() {
     console.log("This is the board:", board)
 }
@@ -220,6 +214,11 @@ function handleClick(index, cell) {
         const row = cell.dataset.row
         // console.log(guess);
         // console.log(pokemon);
+
+        if (board.includes(guess)) {
+            alert(`${guess} is already in play! Please try another Pokemon`);
+            return
+        }
 
 
         let isCorrect = true;
@@ -299,7 +298,7 @@ function handleClick(index, cell) {
             ppCount();
             render();
         } else{
-            alert("WRONG");
+            alert("Incorrect! Please try again");
             attempts++;
 
             ppCount();
@@ -326,7 +325,7 @@ function pointCount() {
 
 function endGame() {
 
-    if (points = 9) {
+    if (points === 9) {
         alert("Congrats, you won!")
     } else {
     alert("You ran out of PP! Game over.")
@@ -345,5 +344,5 @@ hardButton.addEventListener('click', initHard);
 expertButton.addEventListener('click', initExpert);
 randomButton.addEventListener('click', initRandom)
 
-giveUpEl.addEventListener('click', init);
-startEl.addEventListener('click', init);
+giveUpEl.addEventListener('click', giveUp);
+
